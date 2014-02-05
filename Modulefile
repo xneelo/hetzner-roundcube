@@ -1,4 +1,4 @@
-name    'hetzner-roundcube'
+name  'hetzner-roundcube'
 version '0.1.0'
 source 'git://github.com/hetznerZA/hetzner-roundcube.git'
 author 'Hetzner'
