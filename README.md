@@ -34,7 +34,7 @@ Note that the module, though very configurable by using parameterised classes, m
 Setup
 -----
 
-###What roundcube affects:**
+###What roundcube affects:
 
 * package/service/configuration files for RoundCube
 * package/service/configuration files for Apache (optional, but set as default)
