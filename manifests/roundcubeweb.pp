@@ -10,7 +10,6 @@ class roundcube::roundcubeweb (
   $database_password         = $roundcube::params::database_password,
   $database_ssl              = $roundcube::params::database_ssl,
   $listen_addresses          = $roundcube::params::postgres_listen_address,
-  $open_postgres_port        = $roundcube::params::open_postgres_port,
   $main_inc_php_erb          = $roundcube::params::main_inc_php_erb,
   ) inherits roundcube::params {
 
