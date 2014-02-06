@@ -1,11 +1,11 @@
 -- Roundcube Webmail initial database structure
 
 --
--- Sequence "users_seq"
--- Name: users_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Sequence "user_ids"
+-- Name: user_ids; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
-CREATE SEQUENCE users_seq
+CREATE SEQUENCE user_ids
     INCREMENT BY 1
     NO MAXVALUE
     NO MINVALUE
@@ -17,7 +17,7 @@ CREATE SEQUENCE users_seq
 --
 
 CREATE TABLE users (
-    user_id integer DEFAULT nextval('users_seq'::text) PRIMARY KEY,
+    user_id integer DEFAULT nextval('user_ids'::text) PRIMARY KEY,
     username varchar(128) DEFAULT '' NOT NULL,
     mail_host varchar(128) DEFAULT '' NOT NULL,
     created timestamp with time zone DEFAULT now() NOT NULL,
@@ -45,11 +45,11 @@ CREATE INDEX session_changed_idx ON session (changed);
 
 
 --
--- Sequence "identities_seq"
--- Name: identities_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Sequence "identity_ids"
+-- Name: identity_ids; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
-CREATE SEQUENCE identities_seq
+CREATE SEQUENCE identity_ids
     START WITH 1
     INCREMENT BY 1
     NO MAXVALUE
@@ -62,7 +62,7 @@ CREATE SEQUENCE identities_seq
 --
 
 CREATE TABLE identities (
-    identity_id integer DEFAULT nextval('identities_seq'::text) PRIMARY KEY,
+    identity_id integer DEFAULT nextval('identity_ids'::text) PRIMARY KEY,
     user_id integer NOT NULL
         REFERENCES users (user_id) ON DELETE CASCADE ON UPDATE CASCADE,
     changed timestamp with time zone DEFAULT now() NOT NULL,
@@ -82,11 +82,11 @@ CREATE INDEX identities_email_idx ON identities (email, del);
 
 
 --
--- Sequence "contacts_seq"
--- Name: contacts_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Sequence "contact_ids"
+-- Name: contact_ids; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
-CREATE SEQUENCE contacts_seq
+CREATE SEQUENCE contact_ids
     START WITH 1
     INCREMENT BY 1
     NO MAXVALUE
@@ -99,7 +99,7 @@ CREATE SEQUENCE contacts_seq
 --
 
 CREATE TABLE contacts (
-    contact_id integer DEFAULT nextval('contacts_seq'::text) PRIMARY KEY,
+    contact_id integer DEFAULT nextval('contact_ids'::text) PRIMARY KEY,
     user_id integer NOT NULL
         REFERENCES users (user_id) ON DELETE CASCADE ON UPDATE CASCADE,
     changed timestamp with time zone DEFAULT now() NOT NULL,
@@ -115,11 +115,11 @@ CREATE TABLE contacts (
 CREATE INDEX contacts_user_id_idx ON contacts (user_id, del);
 
 --
--- Sequence "contactgroups_seq"
--- Name: contactgroups_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Sequence "contactgroups_ids"
+-- Name: contactgroups_ids; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
-CREATE SEQUENCE contactgroups_seq
+CREATE SEQUENCE contactgroups_ids
     INCREMENT BY 1
     NO MAXVALUE
     NO MINVALUE
@@ -131,7 +131,7 @@ CREATE SEQUENCE contactgroups_seq
 --
 
 CREATE TABLE contactgroups (
-    contactgroup_id integer DEFAULT nextval('contactgroups_seq'::text) PRIMARY KEY,
+    contactgroup_id integer DEFAULT nextval('contactgroups_ids'::text) PRIMARY KEY,
     user_id integer NOT NULL
         REFERENCES users(user_id) ON DELETE CASCADE ON UPDATE CASCADE,
     changed timestamp with time zone DEFAULT now() NOT NULL,
@@ -164,30 +164,14 @@ CREATE INDEX contactgroupmembers_contact_id_idx ON contactgroupmembers (contact_
 
 CREATE TABLE "cache" (
     user_id integer NOT NULL
-        REFERENCES users (user_id) ON DELETE CASCADE ON UPDATE CASCADE,
+    	REFERENCES users (user_id) ON DELETE CASCADE ON UPDATE CASCADE,
     cache_key varchar(128) DEFAULT '' NOT NULL,
     created timestamp with time zone DEFAULT now() NOT NULL,
-    expires timestamp with time zone DEFAULT NULL,
     data text NOT NULL
 );
 
 CREATE INDEX cache_user_id_idx ON "cache" (user_id, cache_key);
-CREATE INDEX cache_expires_idx ON "cache" (expires);
-
---
--- Table "cache_shared"
--- Name: cache_shared; Type: TABLE; Schema: public; Owner: postgres
---
-
-CREATE TABLE "cache_shared" (
-    cache_key varchar(255) NOT NULL,
-    created timestamp with time zone DEFAULT now() NOT NULL,
-    expires timestamp with time zone DEFAULT NULL,
-    data text NOT NULL
-);
-
-CREATE INDEX cache_shared_cache_key_idx ON "cache_shared" (cache_key);
-CREATE INDEX cache_shared_expires_idx ON "cache_shared" (expires);
+CREATE INDEX cache_created_idx ON "cache" (created);
 
 --
 -- Table "cache_index"
@@ -196,15 +180,15 @@ CREATE INDEX cache_shared_expires_idx ON "cache_shared" (expires);
 
 CREATE TABLE cache_index (
     user_id integer NOT NULL
-        REFERENCES users (user_id) ON DELETE CASCADE ON UPDATE CASCADE,
+    	REFERENCES users (user_id) ON DELETE CASCADE ON UPDATE CASCADE,
     mailbox varchar(255) NOT NULL,
-    expires timestamp with time zone DEFAULT NULL,
+    changed timestamp with time zone DEFAULT now() NOT NULL,
     valid smallint NOT NULL DEFAULT 0,
     data text NOT NULL,
     PRIMARY KEY (user_id, mailbox)
 );
 
-CREATE INDEX cache_index_expires_idx ON cache_index (expires);
+CREATE INDEX cache_index_changed_idx ON cache_index (changed);
 
 --
 -- Table "cache_thread"
@@ -213,14 +197,14 @@ CREATE INDEX cache_index_expires_idx ON cache_index (expires);
 
 CREATE TABLE cache_thread (
     user_id integer NOT NULL
-        REFERENCES users (user_id) ON DELETE CASCADE ON UPDATE CASCADE,
+    	REFERENCES users (user_id) ON DELETE CASCADE ON UPDATE CASCADE,
     mailbox varchar(255) NOT NULL,
-    expires timestamp with time zone DEFAULT NULL,
+    changed timestamp with time zone DEFAULT now() NOT NULL,
     data text NOT NULL,
     PRIMARY KEY (user_id, mailbox)
 );
 
-CREATE INDEX cache_thread_expires_idx ON cache_thread (expires);
+CREATE INDEX cache_thread_changed_idx ON cache_thread (changed);
 
 --
 -- Table "cache_messages"
@@ -229,16 +213,16 @@ CREATE INDEX cache_thread_expires_idx ON cache_thread (expires);
 
 CREATE TABLE cache_messages (
     user_id integer NOT NULL
-        REFERENCES users (user_id) ON DELETE CASCADE ON UPDATE CASCADE,
+    	REFERENCES users (user_id) ON DELETE CASCADE ON UPDATE CASCADE,
     mailbox varchar(255) NOT NULL,
     uid integer NOT NULL,
-    expires timestamp with time zone DEFAULT NULL,
+    changed timestamp with time zone DEFAULT now() NOT NULL,
     data text NOT NULL,
     flags integer NOT NULL DEFAULT 0,
     PRIMARY KEY (user_id, mailbox, uid)
 );
 
-CREATE INDEX cache_messages_expires_idx ON cache_messages (expires);
+CREATE INDEX cache_messages_changed_idx ON cache_messages (changed);
 
 --
 -- Table "dictionary"
@@ -247,18 +231,18 @@ CREATE INDEX cache_messages_expires_idx ON cache_messages (expires);
 
 CREATE TABLE dictionary (
     user_id integer DEFAULT NULL
-        REFERENCES users (user_id) ON DELETE CASCADE ON UPDATE CASCADE,
+    	REFERENCES users (user_id) ON DELETE CASCADE ON UPDATE CASCADE,
    "language" varchar(5) NOT NULL,
     data text NOT NULL,
     CONSTRAINT dictionary_user_id_language_key UNIQUE (user_id, "language")
 );
 
 --
--- Sequence "searches_seq"
--- Name: searches_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Sequence "searches_ids"
+-- Name: searches_ids; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
-CREATE SEQUENCE searches_seq
+CREATE SEQUENCE search_ids
     INCREMENT BY 1
     NO MAXVALUE
     NO MINVALUE
@@ -270,7 +254,7 @@ CREATE SEQUENCE searches_seq
 --
 
 CREATE TABLE searches (
-    search_id integer DEFAULT nextval('searches_seq'::text) PRIMARY KEY,
+    search_id integer DEFAULT nextval('search_ids'::text) PRIMARY KEY,
     user_id integer NOT NULL
         REFERENCES users (user_id) ON DELETE CASCADE ON UPDATE CASCADE,
     "type" smallint DEFAULT 0 NOT NULL,
@@ -290,4 +274,4 @@ CREATE TABLE "system" (
     value text
 );
 
-INSERT INTO system (name, value) VALUES ('roundcube-version', '2013061000');
+INSERT INTO system (name, value) VALUES ('roundcube-version', '2013011700');
