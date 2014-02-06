@@ -175,29 +175,35 @@ The port to bind the apache process to (defaults to '80')
 
 ####`directories`
 
-What directories to configure for the virtualhost (defaults to [ { path           => $documentroot,
-                                                                options        => '+FollowSymLinks',
-                                                                allow_override => 'All',
-                                                                order          => 'allow,deny',
-                                                                allow          => 'from all' },
-                                                              { path           => "${documentroot}/config",
-                                                                options        => '-FollowSymLinks',
-                                                                allow_override => 'None' },
-                                                              { path           => "${documentroot}/temp",
-                                                                options        => '-FollowSymLinks',
-                                                                allow_override => 'None',
-                                                                order          => 'allow,deny',
-                                                                deny           => 'from all' },
-                                                              { path           => "${documentroot}/logs",
-                                                                options        => '-FollowSymLinks',
-                                                                allow_override => 'None',
-                                                                order          => 'allow,deny',
-                                                                deny           => 'from all' },
-                                                              { path           => '/usr/share/tinymce/www/',
-                                                                options        => 'Indexes MultiViews FollowSymLinks',
-                                                                allow_override => 'None',
-                                                                order          => 'allow,deny',
-                                                                allow          => 'from all' } ] )
+What directories to configure for the virtualhost (defaults to 
+[ { path           => $documentroot,
+  options        => '+FollowSymLinks',
+  allow_override => 'All',
+  order          => 'allow,deny',
+  allow          => 'from all' },
+
+{ path           => "${documentroot}/config",
+  options        => '-FollowSymLinks',
+  allow_override => 'None' },
+
+{ path           => "${documentroot}/temp",
+  options        => '-FollowSymLinks',
+  allow_override => 'None',
+  order          => 'allow,deny',
+  deny           => 'from all' },
+
+{ path           => "${documentroot}/logs",
+  options        => '-FollowSymLinks',
+  allow_override => 'None',
+  order          => 'allow,deny',
+  deny           => 'from all' },
+
+{ path           => '/usr/share/tinymce/www/',
+  options        => 'Indexes MultiViews FollowSymLinks',
+  allow_override => 'None',
+  order          => 'allow,deny',
+  allow          => 'from all' } 
+] )
 
 **Parameters within roundcube::database::postgresql**
 
