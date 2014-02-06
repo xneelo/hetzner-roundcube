@@ -1,6 +1,5 @@
 # Class for creating the RoundCube postgresql database.
 class roundcube::database::postgresql (
-  $manage_firewall   = $roundcube::params::open_postgres_port,
   $listen_addresses  = $roundcube::params::database_host,
   $database_host     = $roundcube::params::database_host,
   $database_name     = $roundcube::params::database_name,

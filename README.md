@@ -201,10 +201,6 @@ What directories to configure for the virtualhost (defaults to [ { path         
 
 **Parameters within roundcube::database::postgresql**
 
-####`manage_firewall`
-
-If set to `true` this will enable open the local firewall for PostgreSQL protocol access. (defaults to 'undef')
-
 ####`listen_addresses`
 
 The address that the web server should bind to for HTTP requests (defaults to `$::roundcubedb_postgresql_server`)
