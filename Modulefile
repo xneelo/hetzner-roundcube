@@ -5,7 +5,6 @@ author 'Hetzner'
 license 'Apache License, Version 2.0'
 summary 'Roundcube webmail resource types'
 description 'This module provides the necessary classes to install a configurable roundcube webmail service.'
-project_page 'https://github.com/hetznerZA/hetzner-roundcube'
 
 dependency 'puppetlabs/apache', '>= 0.10.0'
 dependency 'puppetlabs/inifile', '>= 1.0.0'
