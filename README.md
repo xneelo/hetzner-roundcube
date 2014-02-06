@@ -52,7 +52,14 @@ The following additional modules are installed from the forge as dependencies
   
 ###Beginning with roundcube
 
-Whether you choose a single node or a multi-node setup, a basic setup of Roundcube will cause: PostgreSQL to install on the node if it’s not already there; Roundcube postgres database instance and user account to be created; the postgres connection to be validated and, if successful, Roundcube to be installed and configured; Roundcube connection to be validated; Apache to install on the node if it's not already there, mod-php installed and activated; roundcube virtualhost configuration created with default directories and options; roundcube-pgsql, roundcube-core and roundcube-plugins packages to be installed; 
+Whether you choose a single node or a multi-node setup, a basic setup of Roundcube will cause: 
+* PostgreSQL to install on the node if it’s not already there.
+* Roundcube postgres database instance and user account to be created
+* the postgres connection to be validated and, if successful, Roundcube to be installed and configured
+* Roundcube connection to be validated
+* Apache to install on the node if it's not already there, mod-php installed and activated
+* roundcube virtualhost configuration created with default directories and options
+* roundcube-pgsql, roundcube-core and roundcube-plugins packages to be installed
 
 Apply the roundcube::roundcubeweb as well as the roundcube::webservice::apache class on the host that will serve the roundcube web site.
 Apply the roundcube::database::postgresql class to the host where you want the database installed.
