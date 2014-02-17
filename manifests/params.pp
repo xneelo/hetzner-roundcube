@@ -1,13 +1,13 @@
 class roundcube::params {
   #database params
   $confdir                    = '/etc/roundcube'
-  $database_host              = $::roundcubedb_postgresql_server
+  $database_host              = $::fqdn
   $database_port              = '5432'
   $database_name              = 'roundcubedb'
   $database_username          = 'roundcubedb'
   $database_password          = 'roundcubedb'
   $database_ssl               = false
-  $postgres_listen_addresses  = $::roundcubedb_postgresql_server
+  $postgres_listen_addresses  = $::fqdn
   $roundcube_backend          = 'psql'
   $roundcube_webserver        = 'apache'
 
