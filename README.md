@@ -91,7 +91,7 @@ The database technology used to host the roundcube database (defaults to postgre
 
 ####`database_host`
 
-The hostname of the server that will host the roundcube database (defaults to `$::roundcubedb_postgresql_server`)
+The hostname of the server that will host the roundcube database (defaults to `$::fqdn`)
 
 ####`database_port`
 
@@ -115,7 +115,7 @@ Whether or not to connect to the database via ssl (defaults to false)
 
 ####`listen_addresses`
 
-What ip(s) postgresql should listen on (default to `$::roundcubedb_postgresql_server`)
+What ip(s) postgresql should listen on (default to `$::fqdn`)
 
 ####`open_postgres_port`
 
@@ -210,11 +210,11 @@ allow          => 'from all' }
 
 ####`listen_addresses`
 
-The address that the web server should bind to for HTTP requests (defaults to `$::roundcubedb_postgresql_server`)
+The address that the web server should bind to for HTTP requests (defaults to `$::fqdn`)
 
 ####`database_host`
 
-The host that runs the roundcube database (defaults to `$::roundcubedb_postgresql_server`)
+The host that runs the roundcube database (defaults to `$::fqdn`)
 
 ####`database_name`
 
