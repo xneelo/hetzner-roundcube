@@ -36,13 +36,17 @@ class roundcube::database::postgresql (
     source => 'puppet:///modules/roundcube/postgres.initial.sql',
   }
 
-  file { '/var/lib/postgresql/.pgpass':
+  concat { '/var/lib/postgresql/.pgpass':
     ensure  => present,
     mode    => '0600',
     owner   => 'postgres',
     group   => 'postgres',
-    content => "$database_host:*:$database_name:$database_username:$database_password",
     require => Postgresql::Server::Db[$database_name],
+  }
+
+  concat::fragment { 'pgpass_initial':
+    target  => '/var/lib/postgresql/.pgpass',
+    content => "$database_host:*:$database_name:$database_username:$database_password\n",
   }
 
   # create the table structure
