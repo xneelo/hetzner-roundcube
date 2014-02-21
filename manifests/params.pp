@@ -8,7 +8,7 @@ class roundcube::params {
   $database_password          = 'roundcubedb'
   $database_ssl               = false
   $postgres_listen_addresses  = $::fqdn
-  $roundcube_backend          = 'psql'
+  $roundcube_backend          = 'pgsql'
   $roundcube_webserver        = 'apache'
 
   #webserver params

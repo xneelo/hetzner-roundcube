@@ -1,5 +1,5 @@
 name  'hetzner-roundcube'
-version '0.1.7'
+version '0.1.8'
 source 'git://github.com/hetznerZA/hetzner-roundcube.git'
 author 'Hetzner'
 license 'Apache License, Version 2.0'
