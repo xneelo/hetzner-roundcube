@@ -18,6 +18,7 @@ class roundcube::params {
   $default_mods               = false
   $default_confd_files        = false
   $mpm_module                 = 'prefork'
+  $force_https                = false
   $servername                 = $::fqdn
   $serveraliases              = []
   $documentroot               = '/var/lib/roundcube'

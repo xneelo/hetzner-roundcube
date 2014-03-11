@@ -85,6 +85,11 @@ The path containing the roundcube configuration files: db.inc.php and main.inc.p
 
 The webserver technology used to host the roundcube site (defaults to apache)
 
+####`force_https`
+
+This toggles whether or not to force roundcube to use https (defaults to false)
+Note: When set to true, you'd want to set the roundcube::webservice::apache::port value to '443'.
+
 ####`roundcube_backend`
 
 The database technology used to host the roundcube database (defaults to postgresql)
