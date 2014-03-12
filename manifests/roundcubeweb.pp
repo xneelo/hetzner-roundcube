@@ -2,6 +2,7 @@ class roundcube::roundcubeweb (
   $apt_mirror                = $roundcube::params::apt_mirror,
   $confdir                   = $roundcube::params::confdir,
   $roundcube_webserver       = $roundcube::params::roundcube_webserver,
+  $force_https               = $roundcube::params::force_https,
   $roundcube_backend         = $roundcube::params::roundcube_backend,
   $database_host             = $roundcube::params::database_host,
   $database_port             = $roundcube::params::database_port,

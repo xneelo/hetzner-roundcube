@@ -8,6 +8,10 @@ class roundcube::webservice::apache (
   $default_mods         = $roundcube::params::purge_configs,
   $default_confd_files  = $roundcube::params::purge_configs,
   $mpm_module           = $roundcube::params::mpm_module,
+  $ssl                  = $roundcube::params::ssl,
+  $ssl_ca               = $roundcube::params::ssl_ca,
+  $ssl_cert             = $roundcube::params::ssl_cert,
+  $ssl_key              = $roundcube::params::ssl_key,
   $scriptaliases        = [ { alias          => '/program/js/tiny_mce/',
                               path           => '/usr/share/tinymce/www/' },
                             { alias          => '/local/bin',
@@ -40,12 +44,12 @@ class roundcube::webservice::apache (
   ) inherits roundcube::params {
 
   class { '::apache':
-            default_vhost       => $default_vhost_on,
-            default_mods        => $default_mods,
-            default_confd_files => $default_confd_files,
-            purge_configs       => $purge_configs,
-            mpm_module          => $mpm_module,
-        }
+    default_vhost       => $default_vhost_on,
+    default_mods        => $default_mods,
+    default_confd_files => $default_confd_files,
+    purge_configs       => $purge_configs,
+    mpm_module          => $mpm_module,
+  }
 
   package { 'libapache2-mod-php5':
     ensure => installed,
@@ -53,8 +57,10 @@ class roundcube::webservice::apache (
 
   apache::mod { 'actions': }
   apache::mod { 'php5': }
-  apache::mod { 'mime': }
-  apache::mod { 'deflate': }
+  if $ssl == false {
+    apache::mod { 'mime': }
+    apache::mod { 'deflate': }
+  }
 
   apache::vhost { 'roundcube':
     port             => $apache_port,
@@ -62,6 +68,10 @@ class roundcube::webservice::apache (
     serveraliases    => $serveraliases,
     docroot          => $documentroot,
     scriptaliases    => $scriptaliases,
+    ssl              => $ssl,
+    ssl_ca           => $ssl_ca,
+    ssl_key          => $ssl_key,
+    ssl_cert         => $ssl_cert,
     directories      => [ $directories,
       addhandlers    => $addhandlers,
     ],

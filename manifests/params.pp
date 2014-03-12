@@ -18,6 +18,7 @@ class roundcube::params {
   $default_mods               = false
   $default_confd_files        = false
   $mpm_module                 = 'prefork'
+  $force_https                = false
   $servername                 = $::fqdn
   $serveraliases              = []
   $documentroot               = '/var/lib/roundcube'
@@ -26,6 +27,10 @@ class roundcube::params {
                                     path           => '/usr/share/tinymce/www/' } ]
   $apache_port                = '80'
   $addhandlers                = []
+  $ssl                        = false
+  $ssl_ca                     = undef
+  $ssl_cert                   = undef
+  $ssl_key                    = undef
   $suphp_user                 = 'roundcube'
   $suphp_group                = 'roundcube'
   $directories                = [ { path           => $documentroot,
