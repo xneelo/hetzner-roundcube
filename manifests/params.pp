@@ -27,6 +27,10 @@ class roundcube::params {
                                     path           => '/usr/share/tinymce/www/' } ]
   $apache_port                = '80'
   $addhandlers                = []
+  $ssl                        = false
+  $ssl_ca                     = undef
+  $ssl_cert                   = undef
+  $ssl_key                    = undef
   $suphp_user                 = 'roundcube'
   $suphp_group                = 'roundcube'
   $directories                = [ { path           => $documentroot,
