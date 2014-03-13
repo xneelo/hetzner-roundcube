@@ -31,6 +31,7 @@ class roundcube::params {
   $ssl_ca                     = undef
   $ssl_cert                   = undef
   $ssl_key                    = undef
+  $redirect_to_ssl            = false
   $suphp_user                 = 'roundcube'
   $suphp_group                = 'roundcube'
   $directories                = [ { path           => $documentroot,

@@ -170,6 +170,26 @@ Whether to purge the default configuration files in the apache conf.d directory 
 
 What mpm module to use for apache (defaults to prefork)
 
+####`redirect_to_ssl`
+
+Boolean you can set to have a vhost on non-ssl redirect to your ssl enabled vhost
+
+###`ssl`
+
+Boolean to enable ssl in the vhost file.
+
+###`ssl_ca`
+
+The path to the ssl ca used
+
+###`ssl_cert`
+
+The path to the ssl certificate
+
+###`ssl_key`
+
+The path to the ssl key
+
 ####`scriptaliases`
 
 Scriptaliases to include in the virtual host file (defaults to `[ { alias => '/program/js/tiny_mce/', path => '/usr/share/tinymce/www/' } ]`)

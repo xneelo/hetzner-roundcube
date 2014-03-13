@@ -8,6 +8,7 @@ class roundcube::webservice::apache (
   $default_mods         = $roundcube::params::purge_configs,
   $default_confd_files  = $roundcube::params::purge_configs,
   $mpm_module           = $roundcube::params::mpm_module,
+  $redirect_to_ssl      = $roundcube::params::redirect_to_ssl,
   $ssl                  = $roundcube::params::ssl,
   $ssl_ca               = $roundcube::params::ssl_ca,
   $ssl_cert             = $roundcube::params::ssl_cert,
@@ -62,19 +63,44 @@ class roundcube::webservice::apache (
     apache::mod { 'deflate': }
   }
 
-  apache::vhost { 'roundcube':
-    port             => $apache_port,
-    servername       => $servername,
-    serveraliases    => $serveraliases,
-    docroot          => $documentroot,
-    scriptaliases    => $scriptaliases,
-    ssl              => $ssl,
-    ssl_ca           => $ssl_ca,
-    ssl_key          => $ssl_key,
-    ssl_cert         => $ssl_cert,
-    directories      => [ $directories,
-      addhandlers    => $addhandlers,
-    ],
+  if $redirect_to_ssl == true {
+    apache::vhost { 'roundcube_non_ssl':
+      port             => 80,
+      servername       => $servername,
+      serveraliases    => $serveraliases,
+      docroot          => $documentroot,
+      redirect_status  => 'permanent',
+      redirect_dest    => "https://${servername}",
+    }
+    apache::vhost { 'roundcube':
+      port             => $apache_port,
+      servername       => $servername,
+      serveraliases    => $serveraliases,
+      docroot          => $documentroot,
+      scriptaliases    => $scriptaliases,
+      ssl              => $ssl,
+      ssl_ca           => $ssl_ca,
+      ssl_key          => $ssl_key,
+      ssl_cert         => $ssl_cert,
+      directories      => [ $directories,
+        addhandlers    => $addhandlers,
+      ],
+    }
+  } else {
+    apache::vhost { 'roundcube':
+      port             => $apache_port,
+      servername       => $servername,
+      serveraliases    => $serveraliases,
+      docroot          => $documentroot,
+      scriptaliases    => $scriptaliases,
+      ssl              => $ssl,
+      ssl_ca           => $ssl_ca,
+      ssl_key          => $ssl_key,
+      ssl_cert         => $ssl_cert,
+      directories      => [ $directories,
+        addhandlers    => $addhandlers,
+      ],
+    }
   }
 
 }
