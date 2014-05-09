@@ -1,15 +1,16 @@
 # Class for creating the RoundCube postgresql database.
 class roundcube::database::postgresql (
-  $listen_addresses  = $roundcube::params::database_host,
-  $database_host     = $roundcube::params::database_host,
-  $database_name     = $roundcube::params::database_name,
-  $database_username = $roundcube::params::database_username,
-  $database_password = $roundcube::params::database_password,
+  $listen_addresses        = $roundcube::params::database_host,
+  $database_host           = $roundcube::params::database_host,
+  $database_name           = $roundcube::params::database_name,
+  $database_username       = $roundcube::params::database_username,
+  $database_password       = $roundcube::params::database_password,
+  $ip_mask_allow_all_users = $roundcube::params::ip_mask_allow_all_users,
 ) inherits roundcube::params {
 
   # get the pg server up and running
   class { '::postgresql::server':
-    ip_mask_allow_all_users => '0.0.0.0/0',
+    ip_mask_allow_all_users => $ip_mask_allow_all_users,
     listen_addresses        => $listen_addresses,
     manage_firewall         => $manage_firewall,
   }

@@ -1,0 +1,43 @@
+{
+  "name": "hetzner-roundcube",
+  "version": "0.1.11",
+  "source": "git://github.com/hetznerZA/hetzner-roundcube.git",
+  "author": "Hetzner",
+  "license": "Apache License, Version 2.0",
+  "summary": "Roundcube webmail resource types",
+  "description": "This module provides the necessary classes to install a configurable roundcube webmail service.",
+  "project_page": "UNKNOWN",
+  "dependencies": [
+    {
+      "name": "puppetlabs/apache",
+      "version_requirement": ">= 0.10.0"
+    },
+    {
+      "name": "puppetlabs/inifile",
+      "version_requirement": ">= 1.0.0"
+    },
+    {
+      "name": "puppetlabs/postgresql",
+      "version_requirement": ">= 3.3.0"
+    },
+    {
+      "name": "puppetlabs/apt",
+      "version_requirement": ">= 1.4.0"
+    }
+  ],
+  "types": [
+
+  ],
+  "checksums": {
+    "Modulefile": "36c6cf322278bd0dc529d09e916e37fa",
+    "README.md": "5deb5a1afe9b0e0657076c5b5f7fcfe1",
+    "files/postgres.initial.sql": "b65cfb6c6b730e1276f377731250604f",
+    "manifests/database/postgresql.pp": "362245041a0fc0bf2c6f5979dc598dac",
+    "manifests/params.pp": "b6dd32adc932f0b3d64526dfe7ed7b08",
+    "manifests/roundcubeweb.pp": "aa33320d5a586a438abe95bf0d9f1ce8",
+    "manifests/webservice/apache.pp": "bf36f1f1c28b3b33c8de0d5cc502a5da",
+    "spec/spec_helper.rb": "a55d1e6483344f8ec6963fcb2c220372",
+    "templates/main.inc.php.erb": "13b5341db60e0a293dd5e77edd3ad189",
+    "tests/init.pp": "3a828d6f3cf1704e53e36852a443549f"
+  }
+}

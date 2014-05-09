@@ -10,6 +10,7 @@ class roundcube::params {
   $postgres_listen_addresses  = $::fqdn
   $roundcube_backend          = 'pgsql'
   $roundcube_webserver        = 'apache'
+  $ip_mask_allow_all_users    = '0.0.0.0/0'
 
   #webserver params
   $apt_mirror                 = 'http://ftp.debian.org/debian'
