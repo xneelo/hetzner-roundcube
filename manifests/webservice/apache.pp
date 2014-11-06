@@ -75,7 +75,7 @@ class roundcube::webservice::apache (
       serveraliases    => $serveraliases,
       docroot          => $documentroot,
       redirect_status  => 'permanent',
-      redirect_dest    => "https://${servername}",
+      redirect_dest    => "https://${servername}/",
     }
     apache::vhost { 'roundcube':
       port             => $apache_port,
