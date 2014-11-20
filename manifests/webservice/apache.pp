@@ -18,6 +18,7 @@ class roundcube::webservice::apache (
                             { alias          => '/local/bin',
                               path           => '/usr/bin' } ],
   $apache_port          = $roundcube::params::apache_port,
+  $rewrites             = $roundcube::params::rewrites,
   $directories          = [ { path           => $documentroot,
                               addhandlers    => $addhandlers,
                               options        => '+FollowSymLinks',
@@ -76,6 +77,7 @@ class roundcube::webservice::apache (
       docroot          => $documentroot,
       redirect_status  => 'permanent',
       redirect_dest    => "https://${servername}/",
+      rewrites         => $rewrites,
     }
     apache::vhost { 'roundcube':
       port             => $apache_port,
@@ -88,6 +90,7 @@ class roundcube::webservice::apache (
       ssl_key          => $ssl_key,
       ssl_cert         => $ssl_cert,
       directories      => $directories,
+      rewrites         => $rewrites,
     }
   } else {
     apache::vhost { 'roundcube':
@@ -101,6 +104,7 @@ class roundcube::webservice::apache (
       ssl_key          => $ssl_key,
       ssl_cert         => $ssl_cert,
       directories      => $directories,
+      rewrites         => $rewrites,
     }
   }
 
