@@ -23,7 +23,7 @@ class roundcube::roundcubeweb (
 
   apt::pin { 'roundcube':
     packages => 'roundcube*',
-    priority => 700,
+    priority => 1001,
     release  => 'wheezy-backports',
   }
 
