@@ -35,7 +35,7 @@ class roundcube::params {
   $redirect_to_ssl            = false
   $suphp_user                 = 'roundcube'
   $suphp_group                = 'roundcube'
-  $rewrites                   = []
+  $rewrites                   = undef
   $directories                = [ { path           => $documentroot,
                                     options        => '+FollowSymLinks',
                                     allow_override => 'All',

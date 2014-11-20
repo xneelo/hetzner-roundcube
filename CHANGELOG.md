@@ -1,3 +1,6 @@
+##2014-11-20 - Release 0.1.18
+###Summary
+- Make the default value for rewrite param undef
 ##2014-11-20 - Release 0.1.17
 ###Summary
 - Fix the pin priority for the backports preferences
