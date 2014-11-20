@@ -1,3 +1,6 @@
+##2014-11-20 - Release 0.1.17
+###Summary
+- Fix the pin priority for the backports preferences
 ##2014-11-20 - Release 0.1.16
 ###Summary
 - Add the ability to add rewrite rules for apache
