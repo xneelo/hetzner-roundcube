@@ -1,3 +1,7 @@
+##2015-05-05 - Release 0.1.19
+###Summary
+ - Fix puppet lint
+ - Update dependancies
 ##2014-11-20 - Release 0.1.18
 ###Summary
 - Make the default value for rewrite param undef
