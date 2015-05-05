@@ -17,8 +17,8 @@ class roundcube::roundcubeweb (
   $packagelist = ['roundcube', 'roundcube-core', 'roundcube-plugins']
 
   apt::source { 'wheezy-backports':
-    location  => $apt_mirror,
-    repos     => 'main',
+    location => $apt_mirror,
+    repos    => 'main',
   }
 
   apt::pin { 'roundcube':
@@ -50,37 +50,37 @@ class roundcube::roundcubeweb (
 
   ini_setting {'dbtype':
     setting => 'dbc_dbtype',
-    value   => "'$roundcube_backend'",
+    value   => "'${roundcube_backend}'",
   }
 
   ini_setting {'dbuser':
     setting => 'dbc_dbuser',
-    value   => "'$database_username'",
+    value   => "'${database_username}'",
   }
 
   ini_setting {'dbpass':
     setting => 'dbc_dbpass',
-    value   => "'$database_password';",
+    value   => "'${database_password}';",
   }
 
   ini_setting {'dbname':
     setting => 'dbc_dbname',
-    value   => "'$database_name';",
+    value   => "'${database_name}';",
   }
 
   ini_setting {'dbserver':
     setting => 'dbc_dbserver',
-    value   => "'$database_host';",
+    value   => "'${database_host}';",
   }
 
   ini_setting {'dbport':
     setting => 'dbc_dbport',
-    value   => "'$database_port';",
+    value   => "'${database_port}';",
   }
 
   ini_setting {'dbssl':
     setting => 'dbc_ssl',
-    value   => "'$database_ssl';",
+    value   => "'${database_ssl}';",
   }
 
   exec { 'reconfigure_roundcube':
@@ -88,7 +88,7 @@ class roundcube::roundcubeweb (
     command     => 'dpkg-reconfigure roundcube-core',
   }
 
-  file { "$confdir/main.inc.php":
+  file { "${confdir}/main.inc.php":
     owner   => root,
     group   => www-data,
     mode    => '0640',

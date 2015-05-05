@@ -47,13 +47,13 @@ class roundcube::database::postgresql (
 
   concat::fragment { 'pgpass_initial':
     target  => '/var/lib/postgresql/.pgpass',
-    content => "$database_host:*:$database_name:$database_username:$database_password\n",
+    content => "${database_host}:*:${database_name}:${database_username}:${database_password}\n",
   }
 
   # create the table structure
   exec { 'create_schema':
-    command => "sudo -u postgres -i psql -U $database_username -h $database_host $database_name < /tmp/postgres.initial.sql",
-    onlyif  => "sudo -u postgres -i psql $database_name -c \"\\dt\" | grep -c \"No relations found.\"",
+    command => "sudo -u postgres -i psql -U ${database_username} -h ${database_host} ${database_name} < /tmp/postgres.initial.sql",
+    onlyif  => "sudo -u postgres -i psql ${database_name} -c \"\\dt\" | grep -c \"No relations found.\"",
     require => [ Postgresql::Server::Db[$database_name], File['/tmp/postgres.initial.sql'], File['/var/lib/postgresql/.pgpass'] ],
   }
 
