@@ -23,7 +23,7 @@
     {
       "name": "puppetlabs/apt",
       "version_requirement": ">= 1.6.0"
-    }
+    },
     {
       "name": "puppetlabs/stdlib",
       "version_requirement": ">= 4.6.0"
