@@ -495,7 +495,7 @@ $rcmail_config['spellcheck_dictionary'] = false;
 
 // Set the spell checking engine. 'googie' is the default. 'pspell' is also available,
 // but requires the Pspell extensions. When using Nox Spell Server, also set 'googie' here.
-$rcmail_config['spellcheck_engine'] = 'googie';
+$rcmail_config['spellcheck_engine'] = '<%= @spellcheck_engine %>';
 
 // For a locally installed Nox Spell Server, please specify the URI to call it.
 // Get Nox Spell Server from http://orangoo.com/labs/?page_id=72
@@ -506,7 +506,7 @@ $rcmail_config['spellcheck_uri'] = '';
 // These languages can be selected for spell checking.
 // Configure as a PHP style hash array: array('en'=>'English', 'de'=>'Deutsch');
 // Leave empty for default set of available language.
-$rcmail_config['spellcheck_languages'] = NULL;
+$rcmail_config['spellcheck_languages'] = array('<%= @spellcheck_languages.join("\',\'") %>');
 
 // Makes that words with all letters capitalized will be ignored (e.g. GOOGLE)
 $rcmail_config['spellcheck_ignore_caps'] = false;

@@ -12,9 +12,17 @@ class roundcube::roundcubeweb (
   $database_ssl              = $roundcube::params::database_ssl,
   $listen_addresses          = $roundcube::params::postgres_listen_address,
   $main_inc_php_erb          = $roundcube::params::main_inc_php_erb,
+  $spellcheck_engine         = $roundcube::params::spellcheck_engine,
+  $spellcheck_languages      = $roundcube::params::spellcheck_languages
   ) inherits roundcube::params {
 
   $packagelist = ['roundcube', 'roundcube-core', 'roundcube-plugins']
+
+  if $spellcheck_engine == 'aspell' {
+    class { '::roundcube::spellchecker::aspell':
+       languagelist => $spellcheck_languages
+    }
+  }
 
   apt::source { 'wheezy-backports':
     location => $apt_mirror,
