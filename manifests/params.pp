@@ -12,6 +12,10 @@ class roundcube::params {
   $roundcube_webserver        = 'apache'
   $ip_mask_allow_all_users    = '0.0.0.0/0'
 
+  #spellchecker params
+  $spellcheck_engine          = 'googie'
+  $spellcheck_languages       = []
+
   #webserver params
   $apt_mirror                 = 'http://ftp.debian.org/debian'
   $main_inc_php_erb           = 'roundcube/main.inc.php.erb'
