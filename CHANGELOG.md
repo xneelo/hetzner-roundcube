@@ -1,3 +1,6 @@
+##2015-10-27 - Release 0.1.20
+###Summary
+ - Add aspell as optional spellchecker engine
 ##2015-05-05 - Release 0.1.19
 ###Summary
  - Fix puppet lint

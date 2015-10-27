@@ -46,6 +46,7 @@ Setup
 Pluginsync is required if you haven't got all the dependent modules already installed on your puppet implementation.
 The following additional modules are installed from the forge as dependencies
 * puppetlabs/apache
+* puppetlabs/stdlib
 * puppetlabs/apt
 * puppetlabs/postgresql
 * puppetlabs/inifile
@@ -129,6 +130,14 @@ Firewall options for the postgresql host (defaults to undef)
 ####`main_inc_php_erb`
 
 The location of the main.inc.php.erb template file (defaults to 'roundcube/main.inc.php.erb')
+
+####`spellcheck_engine`
+
+Override the default 'googie' (Google) spellchecker engine, the only alternative at the moment is aspell
+
+####`spellcheck_languages`
+
+An optional array of languages to be used with aspell, for example ['en','uk','de'] (defaults to 'en')
 
 **Parameters within roundcube::webservice::apache**
 
