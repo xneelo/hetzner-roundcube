@@ -1,12 +1,12 @@
 {
   "name": "hetzner-roundcube",
   "version": "0.1.20",
-  "source": "git://github.com/hetznerZA/hetzner-roundcube.git",
+  "source": "https://github.com/hetznerZA/hetzner-roundcube",
   "author": "Hetzner",
   "license": "Apache License, Version 2.0",
   "summary": "Roundcube webmail resource types",
   "description": "This module provides the necessary classes to install a configurable roundcube webmail service.",
-  "project_page": "Hetzner Roundcube",
+  "project_page": "https://github.com/hetznerZA/hetzner-roundcube",
   "dependencies": [
     {
       "name": "puppetlabs/apache",
