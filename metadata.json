@@ -1,32 +1,27 @@
 {
   "name": "hetzner-roundcube",
-  "version": "0.1.20",
-  "source": "https://github.com/hetznerZA/hetzner-roundcube",
+  "version": "0.1.23",
   "author": "Hetzner",
-  "license": "Apache License, Version 2.0",
+  "license": "Apache-2.0",
   "summary": "Roundcube webmail resource types",
-  "description": "This module provides the necessary classes to install a configurable roundcube webmail service.",
+  "source": "git://github.com/hetznerZA/hetzner-roundcube.git",
   "project_page": "https://github.com/hetznerZA/hetzner-roundcube",
+  "issues_url": "https://github.com/hetznerZA/hetzner-roundcube/issues",
+  "tags": ["roundcube","webmail"],
+  "data_provider": "hiera",
+  "operatingsystem_support": [
+    {"operatingsystem": "Debian","operatingsystemrelease": ["7"]}
+  ],
+  "requirements": [
+    {"name": "puppet","version_requirement": "3.x"},
+    {"name": "roundcube","version_requirement": "0.9.5"}
+  ],
+  "description": "This module provides the necessary classes to install a configurable roundcube webmail service.",
   "dependencies": [
-    {
-      "name": "puppetlabs/apache",
-      "version_requirement": ">= 1.2.0"
-    },
-    {
-      "name": "puppetlabs/inifile",
-      "version_requirement": ">= 1.2.0"
-    },
-    {
-      "name": "puppetlabs/postgresql",
-      "version_requirement": ">= 3.3.0"
-    },
-    {
-      "name": "puppetlabs/apt",
-      "version_requirement": ">= 1.6.0"
-    },
-    {
-      "name": "puppetlabs/stdlib",
-      "version_requirement": ">= 4.6.0"
-    }
+    {"name":"puppetlabs/apache","version_requirement":"1.2.0"},
+    {"name":"puppetlabs/inifile","version_requirement":">= 1.2.0 < 1.5.0"},
+    {"name":"puppetlabs/postgresql","version_requirement":"3.3.0"},
+    {"name":"puppetlabs/apt","version_requirement":">= 1.6.0 < 1.9.0"},
+    {"name":"puppetlabs/stdlib","version_requirement":"4.6.0"}
   ]
 }
