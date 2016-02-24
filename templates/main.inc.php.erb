@@ -28,7 +28,7 @@ $rcmail_config['debug_level'] = 1;
 $rcmail_config['log_driver'] = 'file';
 
 // date format for log entries
-// (read http://php.net/manual/en/function.date.php for all format characters)  
+// (read http://php.net/manual/en/function.date.php for all format characters)
 $rcmail_config['log_date_format'] = 'd-M-Y H:i:s O';
 
 // Syslog ident string to use, if using the 'syslog' log driver.
@@ -167,10 +167,10 @@ $rcmail_config['smtp_auth_cid'] = null;
 // Optional SMTP authentication password to be used for smtp_auth_cid
 $rcmail_config['smtp_auth_pw'] = null;
 
-// SMTP HELO host 
-// Hostname to give to the remote server for SMTP 'HELO' or 'EHLO' messages 
-// Leave this blank and you will get the server variable 'server_name' or 
-// localhost if that isn't defined. 
+// SMTP HELO host
+// Hostname to give to the remote server for SMTP 'HELO' or 'EHLO' messages
+// Leave this blank and you will get the server variable 'server_name' or
+// localhost if that isn't defined.
 $rcmail_config['smtp_helo_host'] = '';
 
 // SMTP connection timeout, in seconds. Default: 0 (no limit)
@@ -481,7 +481,7 @@ $rcmail_config['create_default_folders'] = false;
 // protect the default folders from renames, deletes, and subscription changes
 $rcmail_config['protect_default_folders'] = true;
 
-// if in your system 0 quota means no limit set this option to true 
+// if in your system 0 quota means no limit set this option to true
 $rcmail_config['quota_zero_as_unlimited'] = false;
 
 // Make use of the built-in spell checker. It is based on GoogieSpell.
@@ -554,7 +554,7 @@ $rcmail_config['address_book_type'] = 'sql';
 // Array key must contain only safe characters, ie. a-zA-Z0-9_
 $rcmail_config['ldap_public'] = array();
 
-// If you are going to use LDAP for individual address books, you will need to 
+// If you are going to use LDAP for individual address books, you will need to
 // set 'user_specific' to true and use the variables to generate the appropriate DNs to access it.
 //
 // The recommended directory structure for LDAP is to store all the address book entries
@@ -567,7 +567,7 @@ $rcmail_config['ldap_public'] = array();
 //
 // So the base_dn would be uid=%fu,ou=people,o=root
 // The bind_dn would be the same as based_dn or some super user login.
-/* 
+/*
  * example config for Verisign directory
  *
 $rcmail_config['ldap_public']['Verisign'] = array(
