@@ -1,3 +1,8 @@
+##2016-05-17 - Release 0.1.24
+###Summary
+
+* Fix require to .pgpass use Concat and not File
+
 ##2016-02-24 - Release 0.1.23
 ###Summary
 
