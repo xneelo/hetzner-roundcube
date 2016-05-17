@@ -1,6 +1,6 @@
 {
   "name": "hetzner-roundcube",
-  "version": "0.1.23",
+  "version": "0.1.24",
   "author": "Hetzner",
   "license": "Apache-2.0",
   "summary": "Roundcube webmail resource types",
