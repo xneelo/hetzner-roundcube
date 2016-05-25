@@ -1,3 +1,8 @@
+##2016-05-25 - Release 0.1.25
+###Summary
+
+* Sort out version dependencies for stdlib to not be fixed to single version
+
 ##2016-05-17 - Release 0.1.24
 ###Summary
 
