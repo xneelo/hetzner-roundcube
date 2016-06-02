@@ -1,3 +1,9 @@
+##2016-06-02 - Release 0.1.26
+###Summary
+
+* Remove manage_firewall parameter, to allow support for postgresql module version > 4.0.0
+  https://forge.puppet.com/puppetlabs/postgresql/changelog
+
 ##2016-05-25 - Release 0.1.25
 ###Summary
 

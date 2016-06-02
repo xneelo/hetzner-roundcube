@@ -12,7 +12,6 @@ class roundcube::database::postgresql (
   class { '::postgresql::server':
     ip_mask_allow_all_users => $ip_mask_allow_all_users,
     listen_addresses        => $listen_addresses,
-    manage_firewall         => $manage_firewall,
   }
 
   # create the roundcube database
