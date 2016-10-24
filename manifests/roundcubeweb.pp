@@ -1,17 +1,18 @@
 class roundcube::roundcubeweb (
   $apt_mirror                = $roundcube::params::apt_mirror,
   $confdir                   = $roundcube::params::confdir,
-  $roundcube_webserver       = $roundcube::params::roundcube_webserver,
-  $force_https               = $roundcube::params::force_https,
-  $roundcube_backend         = $roundcube::params::roundcube_backend,
   $database_host             = $roundcube::params::database_host,
-  $database_port             = $roundcube::params::database_port,
   $database_name             = $roundcube::params::database_name,
-  $database_username         = $roundcube::params::database_username,
   $database_password         = $roundcube::params::database_password,
+  $database_port             = $roundcube::params::database_port,
   $database_ssl              = $roundcube::params::database_ssl,
+  $database_username         = $roundcube::params::database_username,
+  $force_https               = $roundcube::params::force_https,
   $listen_addresses          = $roundcube::params::postgres_listen_address,
   $main_inc_php_erb          = $roundcube::params::main_inc_php_erb,
+  $reconfigure_command       = $roundcube::params::reconfigure_command,
+  $roundcube_backend         = $roundcube::params::roundcube_backend,
+  $roundcube_webserver       = $roundcube::params::roundcube_webserver,
   $spellcheck_engine         = $roundcube::params::spellcheck_engine,
   $spellcheck_languages      = $roundcube::params::spellcheck_languages
   ) inherits roundcube::params {
@@ -20,7 +21,7 @@ class roundcube::roundcubeweb (
 
   if $spellcheck_engine == 'aspell' {
     class { '::roundcube::spellchecker::aspell':
-       languagelist => $spellcheck_languages
+      languagelist => $spellcheck_languages
     }
   }
 
@@ -93,7 +94,7 @@ class roundcube::roundcubeweb (
 
   exec { 'reconfigure_roundcube':
     refreshonly => true,
-    command     => '/usr/sbin/dpkg-reconfigure roundcube-core',
+    command     => "${reconfigure_command} roundcube-core",
   }
 
   file { "${confdir}/main.inc.php":
