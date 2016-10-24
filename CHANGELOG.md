@@ -1,3 +1,8 @@
+##2016-10-24 - Release 0.1.27
+###Summary
+
+* Parametrize the roundcube-core reconfigure to support Puppet 3.7
+
 ##2016-06-02 - Release 0.1.26
 ###Summary
 

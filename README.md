@@ -179,6 +179,10 @@ Whether to purge the default configuration files in the apache conf.d directory 
 
 What mpm module to use for apache (defaults to prefork)
 
+####`reconfigure_command`
+
+Command to trigger roundcube reconfiguration after setting db configuration (defaults to '/usr/sbin/dpkg-reconfigure')
+
 ####`redirect_to_ssl`
 
 Boolean you can set to have a vhost on non-ssl redirect to your ssl enabled vhost

@@ -28,6 +28,7 @@ class roundcube::params {
   $serveraliases              = []
   $documentroot               = '/var/lib/roundcube'
   $purge_configs              = true
+  $reconfigure_command        = '/usr/sbin/dpkg-reconfigure'
   $scriptaliases              = [ { alias          => '/program/js/tiny_mce/',
                                     path           => '/usr/share/tinymce/www/' } ]
   $apache_port                = '80'
