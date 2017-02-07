@@ -131,6 +131,10 @@ Firewall options for the postgresql host (defaults to undef)
 
 The location of the main.inc.php.erb template file (defaults to 'roundcube/main.inc.php.erb')
 
+####`plugins`
+
+Any additional plugins to load in the main.inc.php file (default undef)
+
 ####`spellcheck_engine`
 
 Override the default 'googie' (Google) spellchecker engine, the only alternative at the moment is aspell

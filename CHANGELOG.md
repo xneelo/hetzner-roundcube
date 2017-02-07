@@ -1,3 +1,8 @@
+##2017-02-07 - Release 0.1.28
+###Summary
+
+* Add plugin parameter option
+
 ##2016-10-24 - Release 0.1.27
 ###Summary
 

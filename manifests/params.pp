@@ -19,6 +19,7 @@ class roundcube::params {
   #webserver params
   $apt_mirror                 = 'http://ftp.debian.org/debian'
   $main_inc_php_erb           = 'roundcube/main.inc.php.erb'
+  $plugins                    = undef
   $default_vhost_on           = true
   $default_mods               = false
   $default_confd_files        = false
