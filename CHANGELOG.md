@@ -1,3 +1,19 @@
+##2017-02-07 - Release 0.1.29
+###Summary
+
+* Extend support for passing params to populate main.inc.php file
+  - default_host
+  - des_key
+  - imap_auth_type
+  - log_logins
+  - skin
+  - smtp_server
+  - smtp_port
+  - smtp_user
+  - smtp_pass
+  - smtp_auth_type
+  - timezone
+
 ##2017-02-07 - Release 0.1.28
 ###Summary
 

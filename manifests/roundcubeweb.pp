@@ -7,15 +7,26 @@ class roundcube::roundcubeweb (
   $database_port             = $roundcube::params::database_port,
   $database_ssl              = $roundcube::params::database_ssl,
   $database_username         = $roundcube::params::database_username,
+  $default_host              = $roundcube::params::default_host,
+  $des_key                   = $roundcube::params::des_key,
   $force_https               = $roundcube::params::force_https,
+  $imap_auth_type            = $roundcube::params::imap_auth_type,
   $listen_addresses          = $roundcube::params::postgres_listen_address,
+  $log_logins                = $roundcube::params::log_logins,
   $main_inc_php_erb          = $roundcube::params::main_inc_php_erb,
   $plugins                   = $roundcube::params::plugins,
   $reconfigure_command       = $roundcube::params::reconfigure_command,
   $roundcube_backend         = $roundcube::params::roundcube_backend,
   $roundcube_webserver       = $roundcube::params::roundcube_webserver,
+  $skin                      = $roundcube::params::skin,
+  $smtp_server               = $roundcube::params::smtp_server,
+  $smtp_port                 = $roundcube::params::smtp_port,
+  $smtp_user                 = $roundcube::params::smtp_user,
+  $smtp_pass                 = $roundcube::params::smtp_pass,
+  $smtp_auth_type            = $roundcube::params::smtp_auth_type,
   $spellcheck_engine         = $roundcube::params::spellcheck_engine,
   $spellcheck_languages      = $roundcube::params::spellcheck_languages
+  $timezone                  = $roundcube::params::timezone,
   ) inherits roundcube::params {
 
   $packagelist = ['roundcube', 'roundcube-core', 'roundcube-plugins']

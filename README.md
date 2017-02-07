@@ -119,9 +119,25 @@ The password to use to access the roundcube database as the database_username (d
 
 Whether or not to connect to the database via ssl (defaults to false)
 
+####`default_host`
+
+The default_host value to override in main.inc.php (defaults to "")
+
+####`des_key`
+
+The des_key value to use in the main.inc.php file (defaults to "rcmail-!24ByteDESkey*Str")
+
+####`imap_auth_type`
+
+The imap auth type to use in the main.inc.php file (defaults to "null")
+
 ####`listen_addresses`
 
 What ip(s) postgresql should listen on (default to `$::fqdn`)
+
+####`log_logins`
+
+Whether or not set log_logins in main.inc.php (defaults to 'false')
 
 ####`open_postgres_port`
 
@@ -134,6 +150,34 @@ The location of the main.inc.php.erb template file (defaults to 'roundcube/main.
 ####`plugins`
 
 Any additional plugins to load in the main.inc.php file (default undef)
+
+####`skin`
+
+The skin to use in main.inc.php (defaults to 'larry')
+
+####`smtp_server`
+
+The smtp_server set in main.inc.php (defaults to "")
+
+####`smtp_port`
+
+The smtp_port to use in main.inc.php (defaults to '25')
+
+####`smtp_user`
+
+The smtp_user setting in main.inc.php (defaults to '')
+
+####`smtp_pass`
+
+The smtp pass setting in main.inc.php (defaults to '')
+
+####`smtp_auth_type`
+
+The smtp_auth_type setting in main.inc.php (defaults to '')
+
+####`timezone`
+
+The timezone setting in main.inc.php (defaults to 'auto')
 
 ####`spellcheck_engine`
 
