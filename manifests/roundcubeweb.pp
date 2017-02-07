@@ -10,6 +10,7 @@ class roundcube::roundcubeweb (
   $force_https               = $roundcube::params::force_https,
   $listen_addresses          = $roundcube::params::postgres_listen_address,
   $main_inc_php_erb          = $roundcube::params::main_inc_php_erb,
+  $plugins                   = $roundcube::params::plugins,
   $reconfigure_command       = $roundcube::params::reconfigure_command,
   $roundcube_backend         = $roundcube::params::roundcube_backend,
   $roundcube_webserver       = $roundcube::params::roundcube_webserver,
