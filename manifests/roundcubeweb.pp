@@ -25,7 +25,7 @@ class roundcube::roundcubeweb (
   $smtp_pass                 = $roundcube::params::smtp_pass,
   $smtp_auth_type            = $roundcube::params::smtp_auth_type,
   $spellcheck_engine         = $roundcube::params::spellcheck_engine,
-  $spellcheck_languages      = $roundcube::params::spellcheck_languages
+  $spellcheck_languages      = $roundcube::params::spellcheck_languages,
   $timezone                  = $roundcube::params::timezone,
   ) inherits roundcube::params {
 
