@@ -1,3 +1,8 @@
+##2017-02-08 - Release 0.1.30
+###Summary
+
+* Fix syntax error in roundcubeweb.pp
+
 ##2017-02-07 - Release 0.1.29
 ###Summary
 
