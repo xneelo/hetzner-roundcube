@@ -121,15 +121,15 @@ Whether or not to connect to the database via ssl (defaults to false)
 
 ####`default_host`
 
-The default_host value to override in main.inc.php (defaults to "")
+The default_host value to override in main.inc.php (defaults to '')
 
 ####`des_key`
 
-The des_key value to use in the main.inc.php file (defaults to "rcmail-!24ByteDESkey*Str")
+The des_key value to use in the main.inc.php file (defaults to 'rcmail-!24ByteDESkey*Str')
 
 ####`imap_auth_type`
 
-The imap auth type to use in the main.inc.php file (defaults to "null")
+The imap auth type to use in the main.inc.php file (defaults to 'null')
 
 ####`listen_addresses`
 
@@ -137,7 +137,7 @@ What ip(s) postgresql should listen on (default to `$::fqdn`)
 
 ####`log_logins`
 
-Whether or not set log_logins in main.inc.php (defaults to 'false')
+Whether or not set log_logins in main.inc.php (defaults to false)
 
 ####`open_postgres_port`
 
@@ -157,11 +157,11 @@ The skin to use in main.inc.php (defaults to 'larry')
 
 ####`smtp_server`
 
-The smtp_server set in main.inc.php (defaults to "")
+The smtp_server set in main.inc.php (defaults to '')
 
 ####`smtp_port`
 
-The smtp_port to use in main.inc.php (defaults to '25')
+The smtp_port to use in main.inc.php (defaults to 25)
 
 ####`smtp_user`
 

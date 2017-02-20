@@ -1,3 +1,10 @@
+##2017-02-20 - Release 0.1.33
+###Summary
+
+* Bump apt module support to 2.3.0
+* Bump apache module support to 1.11.0 to fix concat warning
+* Update default params for Puppet 4
+
 ##2017-02-08 - Release 0.1.30
 ###Summary
 
