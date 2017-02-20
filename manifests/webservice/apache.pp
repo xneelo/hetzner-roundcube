@@ -63,7 +63,7 @@ class roundcube::webservice::apache (
   }
 
   apache::mod { 'actions': }
-  apache::mod { 'php5': 
+  apache::mod { 'php5':
     lib => 'libphp5.so',
   }
 
