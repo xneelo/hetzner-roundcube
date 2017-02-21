@@ -62,19 +62,14 @@ class roundcube::webservice::apache (
     ensure => installed,
   }
 
-  apache::mod { 'actions': }
+  class { 'apache::mod::actions': }
   apache::mod { 'php5':
     lib => 'libphp5.so',
   }
 
-  if $ssl == false {
-    apache::mod { 'mime': }
-    apache::mod { 'deflate': }
-  }
-
   if $redirect_to_ssl == true {
     apache::vhost { 'roundcube_non_ssl':
-      port            => 80,
+      port            => '80',
       servername      => $servername,
       serveraliases   => $serveraliases,
       docroot         => $documentroot,

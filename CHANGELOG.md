@@ -1,3 +1,8 @@
+##2017-02-20 - Release 0.1.34
+###Summary
+
+* Fix apache module references for puppet 4
+
 ##2017-02-20 - Release 0.1.33
 ###Summary
 
