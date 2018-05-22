@@ -26,7 +26,7 @@ class roundcube::params {
   $default_mods               = false
   $default_confd_files        = false
   $des_key                    = 'rcmail-!24ByteDESkey*Str'
-  $mpm_module                 = 'prefork'
+  $mpm_module                 = 'worker'
   $force_https                = false
   $imap_auth_type             = 'null'
   $log_logins                 = false
