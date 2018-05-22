@@ -5,11 +5,6 @@ class roundcube::packages (
 
   $packagelist = ['roundcube', 'roundcube-core', 'roundcube-plugins']
 
-  apt::source { $apt_release:
-    location => $apt_mirror,
-    repos    => 'main',
-  }
-
   apt::pin { 'roundcube':
     packages => 'roundcube*',
     priority => 1001,
