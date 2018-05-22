@@ -1,0 +1,39 @@
+<?php
+
+/*
++-----------------------------------------------------------------------+
+| Local configuration for the Roundcube Webmail installation.           |
+|                                                                       |
+| This is a sample configuration file only containing the minimum       |
+| setup required for a functional installation. Copy more options       |
+| from defaults.inc.php to this file to override the defaults.          |
+|                                                                       |
+| This file is part of the Roundcube Webmail client                     |
+| Copyright (C) 2005-2013, The Roundcube Dev Team                       |
+|                                                                       |
+| Licensed under the GNU General Public License version 3 or            |
+| any later version with exceptions for skins & plugins.                |
+| See the README file for a full license statement.                     |
++-----------------------------------------------------------------------+
+*/
+
+$config = array();
+
+/* Do not set db_dsnw here, use dpkg-reconfigure roundcube-core to configure database ! */
+include_once("/etc/roundcube/debian-db-roundcube.php");
+
+$config['default_host'] = '<%= @default_host ||= "" %>';
+$config['des_key'] = '<%= @des_key ||= "rcmail-!24ByteDESkey*Str" %>';
+$config['force_https'] = '<%= @force_https ||= "false" %>';
+$config['imap_auth_type'] = '<%= @imap_auth_type ||= "null" %>';
+$config['list_cols'] = array('chbox', 'subject', 'status', 'fromto', 'date', 'size', 'flag', 'attachment');
+$config['plugins'] = array(<%= "'#{@plugins.join("','")}'" unless defined?(@plugins) == nil %>);
+$config['skin'] = '<%= @skin ||= "larry" %>';
+$config['smtp_auth_type'] = '<%= @smtp_auth_type ||= "" %>';
+$config['smtp_pass'] = '<%= @smtp_pass ||= "" %>';
+$config['smtp_port'] = '<%= @smtp_port ||= 25 %>';
+$config['smtp_server'] = '<%= @smtp_server ||= "" %>';
+$config['smtp_user'] = '<%= @smtp_user ||= "" %>';
+$config['spellcheck_engine'] = '<%= @spellcheck_engine %>';
+$config['spellcheck_languages'] = array('<%= @spellcheck_languages.join("\',\'") %>');
+$config['timezone'] = '<%= @timezone ||= "auto" %>';

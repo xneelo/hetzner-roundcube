@@ -1,6 +1,6 @@
 class roundcube::roundcubeweb (
-  $apt_mirror                = $roundcube::params::apt_mirror,
   $confdir                   = $roundcube::params::confdir,
+  $config_inc_php_erb        = $roundcube::params::config_inc_php_erb,
   $database_host             = $roundcube::params::database_host,
   $database_name             = $roundcube::params::database_name,
   $database_password         = $roundcube::params::database_password,
@@ -13,7 +13,6 @@ class roundcube::roundcubeweb (
   $imap_auth_type            = $roundcube::params::imap_auth_type,
   $listen_addresses          = $roundcube::params::postgres_listen_address,
   $log_logins                = $roundcube::params::log_logins,
-  $main_inc_php_erb          = $roundcube::params::main_inc_php_erb,
   $plugins                   = $roundcube::params::plugins,
   $reconfigure_command       = $roundcube::params::reconfigure_command,
   $roundcube_backend         = $roundcube::params::roundcube_backend,
@@ -29,32 +28,12 @@ class roundcube::roundcubeweb (
   $timezone                  = $roundcube::params::timezone,
   ) inherits roundcube::params {
 
-  $packagelist = ['roundcube', 'roundcube-core', 'roundcube-plugins']
+  include ::roundcube::packages
 
   if $spellcheck_engine == 'aspell' {
     class { '::roundcube::spellchecker::aspell':
       languagelist => $spellcheck_languages
     }
-  }
-
-  apt::source { 'wheezy-backports':
-    location => $apt_mirror,
-    repos    => 'main',
-  }
-
-  apt::pin { 'roundcube':
-    packages => 'roundcube*',
-    priority => 1001,
-    release  => 'wheezy-backports',
-  }
-
-  package { "roundcube-${roundcube_backend}":
-    ensure  => installed,
-  }
-
-  package { $packagelist:
-    ensure  => installed,
-    require => Package["roundcube-${roundcube_backend}"],
   }
 
   #Set the defaults
@@ -109,11 +88,11 @@ class roundcube::roundcubeweb (
     command     => "${reconfigure_command} roundcube-core",
   }
 
-  file { "${confdir}/main.inc.php":
+  file { "${confdir}/config.inc.php":
     owner   => root,
     group   => www-data,
     mode    => '0640',
-    content => template($main_inc_php_erb),
+    content => template($config_inc_php_erb),
   }
 
 }
