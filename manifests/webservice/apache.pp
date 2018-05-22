@@ -62,11 +62,6 @@ class roundcube::webservice::apache (
     ensure => installed,
   }
 
-  class { 'apache::mod::actions': }
-  apache::mod { 'php5':
-    lib => 'libphp5.so',
-  }
-
   if $redirect_to_ssl == true {
     apache::vhost { 'roundcube_non_ssl':
       port            => '80',
