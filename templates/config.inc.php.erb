@@ -37,3 +37,7 @@ $config['smtp_user'] = '<%= @smtp_user ||= "" %>';
 $config['spellcheck_engine'] = '<%= @spellcheck_engine %>';
 $config['spellcheck_languages'] = array('<%= @spellcheck_languages.join("\',\'") %>');
 $config['timezone'] = '<%= @timezone ||= "auto" %>';
+$config['create_default_folders'] = true;
+$config['default_folders'] = array('INBOX', 'Sent', 'Trash', 'spambucket');
+$config['preview_pane'] = true;
+$config['preview_pane_mark_read'] = 2;
