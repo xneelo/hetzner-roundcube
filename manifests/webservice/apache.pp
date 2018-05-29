@@ -58,13 +58,8 @@ class roundcube::webservice::apache (
     mpm_module          => $mpm_module,
   }
 
-  package { 'libapache2-mod-php5':
+  package { 'libapache2-mod-php7.0':
     ensure => installed,
-  }
-
-  class { 'apache::mod::actions': }
-  apache::mod { 'php5':
-    lib => 'libphp5.so',
   }
 
   if $redirect_to_ssl == true {
