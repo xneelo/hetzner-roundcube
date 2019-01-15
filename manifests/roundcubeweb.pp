@@ -35,6 +35,9 @@ class roundcube::roundcubeweb (
       languagelist => $spellcheck_languages
     }
   }
+  else {
+    include ::roundcube::spellchecker::pspell
+  }
 
   #Set the defaults
   Ini_setting {
