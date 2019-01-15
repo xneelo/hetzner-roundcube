@@ -1,7 +1,7 @@
 roundcube
 =========
 
-####Table of Contents
+#### Table of Contents
 
 1. [Overview - What is the roundcube module?](#overview)
 2. [Module Description - What does the module do?](#module-description)
@@ -33,7 +33,7 @@ Note that the module, though very configurable by using parameterised classes, m
 Setup
 -----
 
-###What roundcube affects:
+### What roundcube affects:
 
 * package/service/configuration files for RoundCube
 * package/service/configuration files for Apache (optional, but set as default)
@@ -41,7 +41,7 @@ Setup
 * puppet master's runtime (via plugins)
 * listened-to ports
 
-###Setup Requirements:
+### Setup Requirements:
 
 Pluginsync is required if you haven't got all the dependent modules already installed on your puppet implementation.
 The following additional modules are installed from the forge as dependencies
@@ -51,7 +51,7 @@ The following additional modules are installed from the forge as dependencies
 * puppetlabs/postgresql
 * puppetlabs/inifile
   
-###Beginning with roundcube
+### Beginning with roundcube
 
 Whether you choose a single node or a multi-node setup, a basic setup of Roundcube will cause: 
 * PostgreSQL to install on the node if it’s not already there.
@@ -68,122 +68,122 @@ Apply the roundcube::database::postgresql class to the host where you want the d
 Usage
 -----
 
-###roundcube::roundcubeweb
+### roundcube::roundcubeweb
 
 The roundcubeweb class is the main class that will get your frontend up and running
 
 **Parameters within roundcube::roundcubeweb**
 
-####`apt_mirror`
+#### `apt_mirror`
 
 What apt mirror to use for package installs (defaults to 'http://ftp.debian.org/debian')
 
-####`confdir`
+#### `confdir`
 
 The path containing the roundcube configuration files: db.inc.php and main.inc.php (defaults to /etc/roundcube).
 
-####`roundcube_webserver`
+#### `roundcube_webserver`
 
 The webserver technology used to host the roundcube site (defaults to apache)
 
-####`force_https`
+#### `force_https`
 
 This toggles whether or not to force roundcube to use https (defaults to false)
 Note: When set to true, you should set the roundcube::webservice::apache::port value to '443'.
 
-####`roundcube_backend`
+#### `roundcube_backend`
 
 The database technology used to host the roundcube database (defaults to postgresql)
 
-####`database_host`
+#### `database_host`
 
 The hostname of the server that will host the roundcube database (defaults to `$::fqdn`)
 
-####`database_port`
+#### `database_port`
 
 The port for the database to listen on (defaults to 5432)
 
-####`database_name`
+#### `database_name`
 
 What to call the roundcube database (defaults to roundcubedb)
 
-####`database_username`
+#### `database_username`
 
 What user to create for access to the roundcube database (defaults to roundcubedb)
 
-####`database_password`
+#### `database_password`
 
 The password to use to access the roundcube database as the database_username (defaults to roundcubedb)
 
-####`database_ssl`
+#### `database_ssl`
 
 Whether or not to connect to the database via ssl (defaults to false)
 
-####`default_host`
+#### `default_host`
 
 The default_host value to override in main.inc.php (defaults to '')
 
-####`des_key`
+#### `des_key`
 
 The des_key value to use in the main.inc.php file (defaults to 'rcmail-!24ByteDESkey*Str')
 
-####`imap_auth_type`
+#### `imap_auth_type`
 
 The imap auth type to use in the main.inc.php file (defaults to 'null')
 
-####`listen_addresses`
+#### `listen_addresses`
 
 What ip(s) postgresql should listen on (default to `$::fqdn`)
 
-####`log_logins`
+#### `log_logins`
 
 Whether or not set log_logins in main.inc.php (defaults to false)
 
-####`open_postgres_port`
+#### `open_postgres_port`
 
 Firewall options for the postgresql host (defaults to undef)
 
-####`main_inc_php_erb`
+#### `main_inc_php_erb`
 
 The location of the main.inc.php.erb template file (defaults to 'roundcube/main.inc.php.erb')
 
-####`plugins`
+#### `plugins`
 
 Any additional plugins to load in the main.inc.php file (default undef)
 
-####`skin`
+#### `skin`
 
 The skin to use in main.inc.php (defaults to 'larry')
 
-####`smtp_server`
+#### `smtp_server`
 
 The smtp_server set in main.inc.php (defaults to '')
 
-####`smtp_port`
+#### `smtp_port`
 
 The smtp_port to use in main.inc.php (defaults to 25)
 
-####`smtp_user`
+#### `smtp_user`
 
 The smtp_user setting in main.inc.php (defaults to '')
 
-####`smtp_pass`
+#### `smtp_pass`
 
 The smtp pass setting in main.inc.php (defaults to '')
 
-####`smtp_auth_type`
+#### `smtp_auth_type`
 
 The smtp_auth_type setting in main.inc.php (defaults to '')
 
-####`timezone`
+#### `timezone`
 
 The timezone setting in main.inc.php (defaults to 'auto')
 
-####`spellcheck_engine`
+#### `spellcheck_engine`
 
 Override the default 'googie' (Google) spellchecker engine, the only alternative at the moment is aspell
 
-####`spellcheck_languages`
+#### `spellcheck_languages`
 
 An optional array of languages to be used with aspell, for example ['en','uk','de'] (defaults to 'en')
 
@@ -191,75 +191,75 @@ An optional array of languages to be used with aspell, for example ['en','uk','d
 
 These are the parameters used to configure apache to server the roundcube web
 
-####`default_vhost_on`
+#### `default_vhost_on`
 
 Whether or not to create a default virtual host with the apache installation (defaults to false)
 
-####`servername`
+#### `servername`
 
 What servername to set in the roundcube virtualhost file (defaults to `$::fqdn`)
 
-####`serveraliases`
+#### `serveraliases`
 
 An array of serveraliases to add to the virtualhost file (defaults to [])
 
-####`documentroot`
+#### `documentroot`
 
 The documentroot for the roundcube virtual host (defaults to '/var/lib/roundcube')
 
-####`addhandlers`
+#### `addhandlers`
 
 An array of handlers to add to the defined directory section in the virtual host (defaults to [])
 
-####`purge_configs`
+#### `purge_configs`
 
 Removes all other apache configs and vhosts (defaults to true)
 
-####`default_mods`
+#### `default_mods`
 
 Whether or not to install OS specific default modules (defaults to false)
 
-####`default_confd_files`
+#### `default_confd_files`
 
 Whether to purge the default configuration files in the apache conf.d directory (defaults to false)
 
-####`mpm_module`
+#### `mpm_module`
 
 What mpm module to use for apache (defaults to prefork)
 
-####`reconfigure_command`
+#### `reconfigure_command`
 
 Command to trigger roundcube reconfiguration after setting db configuration (defaults to '/usr/sbin/dpkg-reconfigure')
 
-####`redirect_to_ssl`
+#### `redirect_to_ssl`
 
 Boolean you can set to have a vhost on non-ssl redirect to your ssl enabled vhost
 
-###`ssl`
+#### `ssl`
 
 Boolean to enable ssl in the vhost file.
 
-###`ssl_ca`
+#### `ssl_ca`
 
 The path to the ssl ca used
 
-###`ssl_cert`
+#### `ssl_cert`
 
 The path to the ssl certificate
 
-###`ssl_key`
+#### `ssl_key`
 
 The path to the ssl key
 
-####`scriptaliases`
+#### `scriptaliases`
 
 Scriptaliases to include in the virtual host file (defaults to `[ { alias => '/program/js/tiny_mce/', path => '/usr/share/tinymce/www/' } ]`)
 
-####`apache_port`
+#### `apache_port`
 
 The port to bind the apache process to (defaults to '80')
 
-####`directories`
+#### `directories`
 
 What directories to configure for the virtualhost (defaults are as below)     
 ```
@@ -294,27 +294,27 @@ allow          => 'from all' }
 
 **Parameters within roundcube::database::postgresql**
 
-####`listen_addresses`
+#### `listen_addresses`
 
 The address that the web server should bind to for HTTP requests (defaults to `$::fqdn`)
 
-####`database_host`
+#### `database_host`
 
 The host that runs the roundcube database (defaults to `$::fqdn`)
 
-####`database_name`
+#### `database_name`
 
 The name of the database that roundcube uses (defaults to 'roundcubedb')
 
-####`database_username`
+#### `database_username`
 
 The name of the user configured to access the roundcube database (defaults to 'roundcubedb')
 
-####`database_password`
+#### `database_password`
 
 The password used to access the roundcube database (defaults to 'roundcubedb')
 
-##Limitations
+## Limitations
 
 * The module has only been tested and built on Debian7 (Wheezy).
 * The wheezy-backports roundcube packages are required and installed, making use of the puppetlabs/apt module to pin them.
@@ -325,7 +325,7 @@ The password used to access the roundcube database (defaults to 'roundcubedb')
   with all the relevant database config options, then calling dpkg-reconfigure roundcube-core, as per the package documentation/recommendation.
 * So far no support for adding and installing additional roundcube plugins has been done, but this will probably happen in the next iteration of the module.
 
-##Development
+## Development
 
 Feel free and please add compatibility with other platforms, databases and webservers, but please adhere to the puppet modules
 
