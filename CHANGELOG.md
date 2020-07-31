@@ -1,3 +1,24 @@
+##20200-06-30 - Release 1.2.0
+###Summary
+
+* Bump version to match supported Roundcube version
+* Update PostgreSQL schema to version 2015111100
+* Bump Dependencies
+
+
+##2019-01-15 - Release 0.2.1
+###Summary
+
+* Support RoundCube 1.2.X
+* Default config changes
+  - HTML editor infavour of text editor
+  - Junk mailbox to defaults to spambucket mailbox
+  - always ask before downloading images
+  - replies place cursor above original message (top posting)
+  - log successful/failed logins
+* Add support for pspell
+* License and ReadMe updated
+
 ##2017-02-23 - Release 0.1.35
 ###Summary
 
