@@ -4,7 +4,7 @@ class roundcube::spellchecker::aspell (
 
   $langlist = prefix($languagelist, 'aspell-')
 
-  $packagelist = concat(['aspell', 'php7.0-enchant'], $langlist)
+  $packagelist = concat(['aspell', 'php-enchant'], $langlist)
 
   package { $packagelist:
     ensure  => installed,
