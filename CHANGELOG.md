@@ -1,10 +1,14 @@
-##20200-06-30 - Release 1.2.0
+##2022-03-24 - Release 1.2.1
+###Summary
+
+* Removed PHP versioning to enable default php install
+
+##2020-06-30 - Release 1.2.0
 ###Summary
 
 * Bump version to match supported Roundcube version
 * Update PostgreSQL schema to version 2015111100
 * Bump Dependencies
-
 
 ##2019-01-15 - Release 0.2.1
 ###Summary
