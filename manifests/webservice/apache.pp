@@ -58,7 +58,7 @@ class roundcube::webservice::apache (
     mpm_module          => $mpm_module,
   }
 
-  package { 'libapache2-mod-php':
+  package { 'libapache2-mod-php7.3':
     ensure => installed,
   }
 
